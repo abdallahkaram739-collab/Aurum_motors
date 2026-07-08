@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aurum Motors — Find Your Dream Car</title>
+<meta name="description" content="Aurum Motors is a premium car dealership helping you find the perfect luxury vehicle at the best price. Request a callback today." />
+<meta name="theme-color" content="#0A0A0C" />
+<meta name="color-scheme" content="dark light" />
+
+<!-- Favicon (inline SVG, no external file needed) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0A0C'/%3E%3Ctext x='50' y='68' font-size='60' text-anchor='middle' fill='%23C9A768' font-family='Georgia,serif'%3EA%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   AURUM MOTORS — Luxury Dealership Landing Page
+   Design tokens: Onyx / Graphite / Platinum / Pearl / Champagne
+   Display: Cormorant · Body: Jost · Utility: JetBrains Mono
+   ============================================================ */
+
+:root {
+  /* Color — dark (default) theme */
+  --onyx: #0A0A0C;
+  --graphite: #17171B;
+  --graphite-2: #1E1E23;
+  --steel: #2C2D33;
+  --platinum: #C9CCD1;
+  --platinum-dim: #9A9CA3;
+  --pearl: #F6F6F4;
+  --champagne: #C9A768;
+  --champagne-bright: #E4C98A;
+  --error: #B4573C;
+
+  --bg: var(--onyx);
+  --surface: var(--graphite);
+  --surface-2: var(--graphite-2);
+  --border: var(--steel);
+  --text: var(--pearl);
+  --text-dim: var(--platinum);
+  --text-faint: var(--platinum-dim);
+
+  /* Type */
+  --font-display: "Cormorant", serif;
+  --font-body: "Jost", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Layout */
+  --max-width: 1200px;
+  --radius: 4px;
+  --radius-lg: 18px;
+  --header-h: 84px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-theme="light"] {
+  --bg: #F3F1EC;
+  --surface: #FFFFFF;
+  --surface-2: #FBFAF7;
+  --border: #DEDAD0;
+  --text: #17171B;
+  --text-dim: #4A4A4F;
+  --text-faint: #7A7A80;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 3px;
+}
+
+.section-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin: 0 0 14px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.15;
+  margin: 0 0 20px;
+  color: var(--text);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  white-space: nowrap;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--champagne), var(--champagne-bright));
+  color: #17140A;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s var(--ease);
+}
+.btn-primary:hover::before { left: 130%; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -12px rgba(201, 167, 104, 0.55); }
+.btn-outline {
+  border-color: var(--border);
+  color: var(--text);
+  background: transparent;
+}
+.btn-outline:hover { border-color: var(--champagne); color: var(--champagne); }
+.btn-ghost-nav {
+  border: 1px solid var(--champagne);
+  color: var(--champagne);
+  padding: 10px 22px;
+  font-size: 13px;
+  border-radius: var(--radius);
+}
+.btn-ghost-nav:hover { background: var(--champagne); color: #17140A; }
+
+/* ============================================================
+   LOADING SCREEN
+   ============================================================ */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--onyx);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s var(--ease), visibility 0.7s var(--ease);
+}
+.loading-screen.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loading-inner { text-align: center; }
+.loading-mark {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 6vw, 52px);
+  letter-spacing: 10px;
+  color: var(--pearl);
+  animation: fadeUp 0.8s var(--ease) both;
+}
+.loading-sub {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 6px;
+  color: var(--champagne);
+  margin-top: 8px;
+  animation: fadeUp 0.8s var(--ease) 0.15s both;
+}
+.loading-line {
+  display: block;
+  width: 0;
+  height: 1px;
+  background: var(--champagne);
+  margin: 18px auto;
+  animation: growLine 1.1s var(--ease) 0.3s forwards;
+}
+@keyframes growLine { to { width: 180px; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s var(--ease), border-color 0.4s var(--ease), height 0.4s var(--ease);
+}
+.site-header.is-scrolled {
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom-color: var(--border);
+  height: 68px;
+}
+.header-inner {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.logo { display: flex; align-items: baseline; gap: 8px; }
+.logo-mark { font-family: var(--font-display); font-size: 22px; letter-spacing: 3px; color: var(--text); }
+.logo-sub { font-family: var(--font-mono); font-size: 10px; letter-spacing: 3px; color: var(--champagne); }
+
+.main-nav { display: flex; gap: 34px; }
+.main-nav a {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.25s var(--ease);
+}
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 1px;
+  background: var(--champagne);
+  transition: width 0.3s var(--ease);
+}
+.main-nav a:hover { color: var(--text); }
+.main-nav a:hover::after { width: 100%; }
+
+.header-actions { display: flex; align-items: center; gap: 18px; }
+.theme-toggle {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+.theme-toggle:hover { border-color: var(--champagne); color: var(--champagne); }
+.icon-moon { display: none; }
+[data-theme="light"] .icon-sun { display: none; }
+[data-theme="light"] .icon-moon { display: block; }
+
+.nav-toggle {
+  display: none;
+  width: 32px; height: 22px;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.nav-toggle span { display: block; height: 1px; background: var(--text); transition: transform 0.3s var(--ease), opacity 0.3s var(--ease); }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: calc(var(--header-h) + 40px) 24px 80px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, color-mix(in srgb, var(--champagne) 10%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--onyx) 0%, #0E0E11 60%, var(--onyx) 100%);
+}
+[data-theme="light"] .hero {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, color-mix(in srgb, var(--champagne) 16%, transparent), transparent 70%),
+    linear-gradient(180deg, #EDEAE1 0%, #F3F1EC 60%, #F3F1EC 100%);
+}
+.hero-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+.hero-slide-kb {
+  position: absolute;
+  inset: -4%;
+  background-size: cover;
+  background-position: center 55%;
+  filter: saturate(1.05);
+}
+.hero-slide.is-active { animation: heroSlideFade 9s var(--ease) forwards; }
+.hero-slide.is-active .hero-slide-kb { animation: kenBurns 9s linear forwards; }
+@keyframes heroSlideFade {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  82%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes kenBurns {
+  0%   { transform: scale(1.12) translate(0, 0); }
+  100% { transform: scale(1.0) translate(-1%, -1%); }
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--onyx) 55%, transparent) 0%, color-mix(in srgb, var(--onyx) 35%, transparent) 38%, var(--onyx) 96%),
+    linear-gradient(90deg, color-mix(in srgb, var(--onyx) 45%, transparent) 0%, transparent 45%, color-mix(in srgb, var(--onyx) 45%, transparent) 100%);
+}
+[data-theme="light"] .hero-overlay {
+  background:
+    linear-gradient(180deg, color-mix(in srgb, #F3F1EC 45%, transparent) 0%, color-mix(in srgb, #F3F1EC 25%, transparent) 38%, #F3F1EC 96%),
+    linear-gradient(90deg, color-mix(in srgb, #F3F1EC 40%, transparent) 0%, transparent 45%, color-mix(in srgb, #F3F1EC 40%, transparent) 100%);
+}
+.hero-horizon {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+  opacity: 0.5;
+  z-index: 2;
+}
+.hero-dots {
+  position: absolute;
+  left: 50%; bottom: 84px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+.hero-dot {
+  width: 26px; height: 3px;
+  background: color-mix(in srgb, var(--champagne) 35%, transparent);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-dot::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--champagne);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.hero-dot.is-active::after { animation: heroDotFill 9s linear forwards; }
+@keyframes heroDotFill { to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide.is-active, .hero-slide.is-active .hero-slide-kb, .hero-dot.is-active::after { animation: none !important; }
+  .hero-slide.is-active { opacity: 1; }
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 780px; }
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(48px, 8vw, 92px);
+  line-height: 1.02;
+  margin: 0 0 22px;
+  color: var(--text);
+}
+.hero-title em { font-style: italic; color: var(--champagne); }
+.hero-subtitle {
+  font-size: clamp(15px, 1.6vw, 18px);
+  color: var(--text-dim);
+  max-width: 560px;
+  margin: 0 auto 36px;
+}
+.hero-actions { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 34px; left: 50%;
+  transform: translateX(-50%);
+  width: 26px; height: 42px;
+  border: 1px solid var(--text-faint);
+  border-radius: 20px;
+  background: none;
+  z-index: 2;
+}
+.scroll-dot {
+  position: absolute;
+  top: 8px; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 8px;
+  border-radius: 2px;
+  background: var(--champagne);
+  animation: scrollDot 1.8s ease-in-out infinite;
+}
+@keyframes scrollDot { 0%,100% { transform: translate(-50%,0); opacity: 1; } 60% { transform: translate(-50%,14px); opacity: 0; } }
+
+/* ============================================================
+   REVEAL ON SCROLL (below-the-fold sections — needs JS to know
+   when an element enters the viewport; see initRevealOnScroll())
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Elegant stagger for grouped cards — pure CSS nth-child delays,
+   layered on top of the JS-triggered .is-visible class above */
+.features-grid .feature-card:nth-child(1).is-visible { transition-delay: 0s; }
+.features-grid .feature-card:nth-child(2).is-visible { transition-delay: 0.08s; }
+.features-grid .feature-card:nth-child(3).is-visible { transition-delay: 0.16s; }
+.features-grid .feature-card:nth-child(4).is-visible { transition-delay: 0.24s; }
+.features-grid .feature-card:nth-child(5).is-visible { transition-delay: 0.32s; }
+.stats .stat-plate:nth-child(1).is-visible { transition-delay: 0s; }
+.stats .stat-plate:nth-child(2).is-visible { transition-delay: 0.12s; }
+.stats .stat-plate:nth-child(3).is-visible { transition-delay: 0.24s; }
+
+/* ============================================================
+   HERO ENTRANCE — pure CSS keyframes, no JS required.
+   The hero is always in the initial viewport, so it can animate
+   in immediately on page load instead of waiting on a scroll observer.
+   ============================================================ */
+.hero-anim { opacity: 0; animation: heroIn 0.9s var(--ease) forwards; }
+.hero-content .eyebrow.hero-anim { animation-delay: 0.15s; }
+.hero-content .hero-title.hero-anim { animation-delay: 0.3s; }
+.hero-content .hero-subtitle.hero-anim { animation-delay: 0.5s; }
+.hero-content .hero-actions.hero-anim { animation-delay: 0.7s; }
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   STATS (spec-plate signature element)
+   ============================================================ */
+.stats { padding: 90px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stats .section-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.stat-plate {
+  position: relative;
+  padding: 34px 20px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+}
+.stat-plate::before, .stat-plate::after {
+  content: ""; position: absolute; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--champagne); opacity: 0.6;
+}
+.stat-plate::before { top: 10px; left: 10px; }
+.stat-plate::after { bottom: 10px; right: 10px; }
+.stat-number {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(36px, 5vw, 54px);
+  font-weight: 500;
+  color: var(--champagne);
+  letter-spacing: 1px;
+}
+.stat-label {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   SHOWCASE — real, current-model vehicle photography
+   ============================================================ */
+.showcase { padding: 110px 0; text-align: center; }
+.showcase .eyebrow, .showcase .section-title { text-align: center; }
+.showcase-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 26px;
+  text-align: left;
+}
+.showcase-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+}
+.showcase-card:hover {
+  transform: translateY(-8px);
+  border-color: color-mix(in srgb, var(--champagne) 50%, var(--border));
+  box-shadow: 0 24px 48px -24px rgba(0,0,0,0.45);
+}
+.showcase-media {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+.showcase-media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 0.7s var(--ease);
+}
+.showcase-card:hover .showcase-media img { transform: scale(1.14); }
+.showcase-media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--onyx) 75%, transparent) 100%);
+  opacity: 0.9;
+}
+.showcase-tag {
+  position: absolute;
+  top: 16px; left: 16px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #17140A;
+  background: linear-gradient(135deg, var(--champagne), var(--champagne-bright));
+  padding: 6px 12px;
+  border-radius: 30px;
+}
+.showcase-info { padding: 22px 24px 26px; }
+.showcase-info h3 { font-family: var(--font-display); font-size: 24px; font-weight: 600; margin: 0 0 8px; }
+.showcase-info p { font-size: 14px; color: var(--text-dim); margin: 0 0 16px; line-height: 1.7; }
+.showcase-info .btn-outline { padding: 10px 20px; font-size: 12px; }
+
+.showcase-grid .showcase-card:nth-child(1).is-visible { transition-delay: 0s; }
+.showcase-grid .showcase-card:nth-child(2).is-visible { transition-delay: 0.1s; }
+.showcase-grid .showcase-card:nth-child(3).is-visible { transition-delay: 0.2s; }
+
+/* ============================================================
+   FEATURES
+   ============================================================ */
+.features { padding: 110px 0; text-align: center; }
+.features .eyebrow, .features .section-title { text-align: center; }
+.features-grid {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  text-align: left;
+}
+.feature-card {
+  padding: 30px 26px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  backdrop-filter: blur(10px);
+  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--champagne);
+  box-shadow: 0 20px 40px -24px rgba(0,0,0,0.5);
+}
+.feature-icon { color: var(--champagne); margin-bottom: 18px; }
+.feature-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 600; margin: 0 0 10px; }
+.feature-card p { font-size: 14px; color: var(--text-dim); margin: 0; line-height: 1.7; }
+
+/* ============================================================
+   LEAD FORM
+   ============================================================ */
+.lead-section { padding: 110px 0 130px; }
+.lead-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 60px;
+  align-items: start;
+}
+.lead-intro .section-title { text-align: left; }
+.lead-copy { color: var(--text-dim); font-size: 15px; max-width: 420px; margin-bottom: 26px; }
+.lead-points { display: flex; flex-direction: column; gap: 12px; }
+.lead-points li {
+  font-size: 14px; color: var(--text-dim);
+  padding-left: 22px; position: relative;
+}
+.lead-points li::before {
+  content: ""; position: absolute; left: 0; top: 8px;
+  width: 10px; height: 1px; background: var(--champagne);
+}
+
+.glass-card {
+  background: color-mix(in srgb, var(--surface) 65%, transparent);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: 0 30px 60px -34px rgba(0,0,0,0.6);
+}
+
+.form-progress { height: 2px; background: var(--border); border-radius: 2px; margin-bottom: 28px; overflow: hidden; }
+.form-progress-fill { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--champagne), var(--champagne-bright)); transition: width 0.4s var(--ease); }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { margin-bottom: 18px; display: flex; flex-direction: column; gap: 7px; }
+.field label { font-size: 12px; letter-spacing: 0.5px; color: var(--text-dim); }
+.field label em { color: var(--champagne); font-style: normal; }
+.field input, .field select, .field textarea {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text);
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A768' stroke-width='1.4' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 34px; }
+.field textarea { resize: vertical; min-height: 90px; }
+.field input::placeholder, .field textarea::placeholder { color: var(--text-faint); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--champagne); background: var(--surface); }
+.field.is-valid input, .field.is-valid select { border-color: #5C8A6B; }
+.field.is-invalid input, .field.is-invalid select { border-color: var(--error); }
+.field-msg { font-size: 11.5px; min-height: 14px; color: var(--error); }
+.field.is-valid .field-msg { color: #5C8A6B; }
+
+.btn-submit { width: 100%; margin-top: 6px; position: relative; }
+.btn-spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(23,20,10,0.3);
+  border-top-color: #17140A;
+  border-radius: 50%;
+  display: none;
+  animation: spin 0.7s linear infinite;
+}
+.btn-submit.is-loading .btn-label { opacity: 0.6; }
+.btn-submit.is-loading .btn-spinner { display: block; }
+.btn-submit:disabled { cursor: not-allowed; opacity: 0.85; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.form-fineprint { margin: 14px 0 0; font-size: 11.5px; color: var(--text-faint); text-align: center; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 80px 0 0; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 0.8fr 0.8fr 1fr; gap: 40px; padding-bottom: 50px; }
+.footer-brand p { color: var(--text-dim); font-size: 13.5px; max-width: 280px; margin: 16px 0 20px; }
+.social-icons { display: flex; gap: 12px; }
+.social-icons a {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-dim);
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+.social-icons a:hover { border-color: var(--champagne); color: var(--champagne); }
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col h4 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--champagne); margin: 0 0 6px; }
+.footer-col a, .footer-col span { font-size: 13.5px; color: var(--text-dim); }
+.footer-col a:hover { color: var(--champagne); }
+.map-placeholder { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface-2); aspect-ratio: 5/3; }
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 22px clamp(20px, 5vw, 64px);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  font-size: 12px; color: var(--text-faint);
+  max-width: var(--max-width); margin: 0 auto;
+}
+
+/* ============================================================
+   FLOATING BUTTONS
+   ============================================================ */
+.whatsapp-fab, .back-to-top {
+  position: fixed;
+  right: 24px;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 26px -10px rgba(0,0,0,0.5);
+  z-index: 60;
+  transition: transform 0.25s var(--ease), opacity 0.3s var(--ease), visibility 0.3s var(--ease);
+}
+.whatsapp-fab { bottom: 24px; background: var(--surface); border: 1px solid var(--border); }
+.whatsapp-fab:hover { transform: scale(1.08); }
+.back-to-top {
+  bottom: 88px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--champagne);
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+}
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { border-color: var(--champagne); }
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(6,6,7,0.7);
+  backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  animation: fadeUp 0.3s var(--ease);
+}
+.modal-overlay[hidden] { display: none; }
+.modal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 44px 34px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  animation: fadeUp 0.4s var(--ease);
+}
+.modal-check { margin: 0 auto 18px; }
+#checkPath { stroke-dasharray: 40; stroke-dashoffset: 40; animation: drawCheck 0.6s var(--ease) 0.3s forwards; }
+@keyframes drawCheck { to { stroke-dashoffset: 0; } }
+.modal-card h3 { font-family: var(--font-display); font-size: 24px; margin: 0 0 10px; }
+.modal-card p { font-size: 14px; color: var(--text-dim); margin: 0 0 26px; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .main-nav { display: none; }
+  .nav-toggle { display: flex; }
+  .lead-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .stats .section-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .glass-card { padding: 24px; }
+  .header-actions .btn-ghost-nav { display: none; }
+  .whatsapp-fab, .back-to-top { right: 16px; width: 46px; height: 46px; }
+  .back-to-top { bottom: 78px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .hero-anim, .hero-slide, .hero-slide-kb, .hero-dot::after, .scroll-dot, .loading-mark, .loading-sub, .loading-line, #checkPath, .showcase-media img {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .hero-slide { display: none; }
+  .hero-slide:first-child { display: block; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     LOADING SCREEN
+     ============================================ -->
+<div id="loadingScreen" class="loading-screen" role="status" aria-label="Loading">
+  <div class="loading-inner">
+    <span class="loading-mark">AURUM</span>
+    <span class="loading-line" aria-hidden="true"></span>
+    <span class="loading-sub">MOTORS</span>
+  </div>
+</div>
+
+<!-- ============================================
+     HEADER
+     ============================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="#top" class="logo" aria-label="Aurum Motors home">
+      <span class="logo-mark">AURUM</span><span class="logo-sub">MOTORS</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <a href="#top">Home</a>
+      <a href="#showcase">Showroom</a>
+      <a href="#stats">Track Record</a>
+      <a href="#features">Why Us</a>
+      <a href="#lead-form">Get a Quote</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode" aria-pressed="false">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M12 2.5v2M12 19.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.5 12h2M19.5 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </button>
+      <a href="#lead-form" class="btn btn-ghost-nav">Request a Call</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section class="hero" id="hero">
+    <div class="hero-scene" id="heroScene" aria-hidden="true">
+      <div class="hero-slide is-active" data-slide="0">
+        <div class="hero-slide-kb" style="background-image:url('https://images.unsplash.com/photo-1764605206511-7a649d9df63b?w=1800&amp;q=80&amp;auto=format&amp;fit=crop')"></div>
+      </div>
+      <div class="hero-slide" data-slide="1">
+        <div class="hero-slide-kb" style="background-image:url('https://images.unsplash.com/photo-1738181957175-e9f68b5e221e?w=1800&amp;q=80&amp;auto=format&amp;fit=crop')"></div>
+      </div>
+      <div class="hero-slide" data-slide="2">
+        <div class="hero-slide-kb" style="background-image:url('https://images.unsplash.com/photo-1719970680701-9c9f5c3ff8b0?w=1800&amp;q=80&amp;auto=format&amp;fit=crop')"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-horizon"></div>
+      <div class="hero-dots" id="heroDots">
+        <span class="hero-dot is-active"></span>
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <p class="eyebrow hero-anim">Curated. Verified. Delivered.</p>
+      <h1 class="hero-title hero-anim">Find Your<br /><em>Dream Car</em></h1>
+      <p class="hero-subtitle hero-anim">We help you find the perfect car at the best price — matched by our specialists, backed by a trusted dealer network.</p>
+      <div class="hero-actions hero-anim">
+        <a href="#lead-form" class="btn btn-primary">Request a Call</a>
+        <a href="#features" class="btn btn-outline">Why Aurum</a>
+      </div>
+    </div>
+
+    <button type="button" class="scroll-indicator" id="scrollIndicator" aria-label="Scroll to next section">
+      <span class="scroll-dot"></span>
+    </button>
+  </section>
+
+  <!-- ============================================
+       STATISTICS SECTION
+       ============================================ -->
+  <section class="stats" id="stats">
+    <div class="section-inner">
+      <div class="stat-plate reveal">
+        <span class="stat-number" data-target="5000" data-suffix="+">0</span>
+        <span class="stat-label">Happy Customers</span>
+      </div>
+      <div class="stat-plate reveal">
+        <span class="stat-number" data-target="3000" data-suffix="+">0</span>
+        <span class="stat-label">Cars Sold</span>
+      </div>
+      <div class="stat-plate reveal">
+        <span class="stat-number" data-target="10" data-suffix="+">0</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SHOWCASE SECTION — real, current vehicle photography
+       ============================================ -->
+  <section class="showcase" id="showcase">
+    <div class="section-inner">
+      <p class="eyebrow reveal">In The Showroom Now</p>
+      <h2 class="section-title reveal">Newly Arrived, <em>Ready to Drive</em></h2>
+      <div class="showcase-grid">
+        <article class="showcase-card reveal">
+          <div class="showcase-media">
+            <span class="showcase-tag">New Arrival</span>
+            <img src="https://images.unsplash.com/photo-1764605206511-7a649d9df63b?w=900&q=80&auto=format&fit=crop" alt="Modern black luxury sedan parked on a city street at night" loading="lazy" />
+          </div>
+          <div class="showcase-info">
+            <h3>Luxury Sedan</h3>
+            <p>Executive comfort, a hushed cabin, and a commanding presence for every arrival.</p>
+            <a href="#lead-form" class="btn btn-outline">Enquire Now</a>
+          </div>
+        </article>
+        <article class="showcase-card reveal">
+          <div class="showcase-media">
+            <span class="showcase-tag">New Arrival</span>
+            <img src="https://images.unsplash.com/photo-1738181957175-e9f68b5e221e?w=900&q=80&auto=format&fit=crop" alt="Modern red performance sports car on an open road" loading="lazy" />
+          </div>
+          <div class="showcase-info">
+            <h3>Performance Coupe</h3>
+            <p>Sharp handling and head-turning design, built for drivers who want more.</p>
+            <a href="#lead-form" class="btn btn-outline">Enquire Now</a>
+          </div>
+        </article>
+        <article class="showcase-card reveal">
+          <div class="showcase-media">
+            <span class="showcase-tag">New Arrival</span>
+            <img src="https://images.unsplash.com/photo-1719970680701-9c9f5c3ff8b0?w=900&q=80&auto=format&fit=crop" alt="Modern white SUV on display in a showroom" loading="lazy" />
+          </div>
+          <div class="showcase-info">
+            <h3>Premium SUV</h3>
+            <p>Spacious, versatile and effortlessly modern, for family and city alike.</p>
+            <a href="#lead-form" class="btn btn-outline">Enquire Now</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURES SECTION
+       ============================================ -->
+  <section class="features" id="features">
+    <div class="section-inner">
+      <p class="eyebrow reveal">Why Aurum Motors</p>
+      <h2 class="section-title reveal">The Standard, Redefined</h2>
+
+      <div class="features-grid">
+        <article class="feature-card reveal">
+          <svg class="feature-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M6 24l3-9a3 3 0 0 1 2.9-2h16.2a3 3 0 0 1 2.9 2l3 9" stroke="currentColor" stroke-width="1.6"/><rect x="4" y="24" width="32" height="8" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="32" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="28" cy="32" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+          <h3>Premium Cars</h3>
+          <p>A hand-inspected inventory of the world's most sought-after marques, verified before they ever reach you.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <svg class="feature-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="5" y="10" width="30" height="20" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M5 16h30" stroke="currentColor" stroke-width="1.6"/><path d="M10 23h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <h3>Fast Financing</h3>
+          <p>Pre-approved plans and flexible instalments, arranged in as little as 24 hours through our banking partners.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <svg class="feature-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 5l13 5v9c0 9-5.5 14.7-13 16-7.5-1.3-13-7-13-16v-9l13-5z" stroke="currentColor" stroke-width="1.6"/><path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Warranty</h3>
+          <p>Every vehicle ships with a comprehensive warranty, so your investment stays protected long after the sale.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <svg class="feature-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4l4.5 9.2 10.2 1.5-7.4 7.1 1.7 10.1L20 27l-9 4.9 1.7-10.1-7.4-7.1 10.2-1.5L20 4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <h3>Trusted Dealer</h3>
+          <p>Over a decade of transparent dealings and thousands of five-star handovers across the region.</p>
+        </article>
+
+        <article class="feature-card reveal">
+          <svg class="feature-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 5v6M20 29v6M5 20h6M29 20h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="20" cy="20" r="8" stroke="currentColor" stroke-width="1.6"/></svg>
+          <h3>Luxury Service</h3>
+          <p>A dedicated concierge manages every step — from test drive to delivery at your door.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       LEAD FORM SECTION
+       ============================================ -->
+  <section class="lead-section" id="lead-form">
+    <div class="section-inner lead-grid">
+
+      <div class="lead-intro reveal">
+        <p class="eyebrow">Get a Quote</p>
+        <h2 class="section-title">Tell Us What<br />You're Looking For</h2>
+        <p class="lead-copy">Share a few details and one of our product specialists will call you back — usually within the hour, always without pressure.</p>
+        <ul class="lead-points">
+          <li>No obligation, no spam</li>
+          <li>Personalised shortlist within 24h</li>
+          <li>Best-price guarantee</li>
+        </ul>
+      </div>
+
+      <form class="lead-form glass-card" id="leadForm" novalidate>
+        <div class="form-progress" aria-hidden="true">
+          <span class="form-progress-fill" id="formProgressFill"></span>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="fullName">Full Name <em>*</em></label>
+            <input type="text" id="fullName" name="fullName" autocomplete="name" placeholder="John Carter" required />
+            <span class="field-msg" id="fullNameMsg"></span>
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number <em>*</em></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="010 1234 5678" inputmode="numeric" required />
+            <span class="field-msg" id="phoneMsg"></span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email <em>*</em></label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="john@example.com" required />
+          <span class="field-msg" id="emailMsg"></span>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="brand">Desired Car Brand <em>*</em></label>
+            <select id="brand" name="brand" required>
+              <option value="" disabled selected>Select a brand</option>
+              <option>BMW</option>
+              <option>Mercedes</option>
+              <option>Audi</option>
+              <option>Toyota</option>
+              <option>Hyundai</option>
+              <option>Kia</option>
+              <option>Honda</option>
+              <option>Ford</option>
+              <option>MG</option>
+              <option>Chevrolet</option>
+              <option>Chery</option>
+              <option>Nissan</option>
+              <option>Other</option>
+            </select>
+            <span class="field-msg" id="brandMsg"></span>
+          </div>
+          <div class="field">
+            <label for="model">Desired Model</label>
+            <input type="text" id="model" name="model" placeholder="e.g. 5 Series" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="budget">Budget</label>
+            <select id="budget" name="budget">
+              <option value="" disabled selected>Select a range</option>
+              <option>Less than 500,000 EGP</option>
+              <option>500K - 750K</option>
+              <option>750K - 1M</option>
+              <option>1M - 1.5M</option>
+              <option>1.5M - 2M</option>
+              <option>More than 2M</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="paymentMethod">Payment Method</label>
+            <select id="paymentMethod" name="paymentMethod">
+              <option value="" disabled selected>Select an option</option>
+              <option>Cash</option>
+              <option>Installments</option>
+              <option>Not Sure</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Write any additional requirements..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+          <span class="btn-label">Request a Call</span>
+          <span class="btn-spinner" aria-hidden="true"></span>
+        </button>
+        <p class="form-fineprint">By submitting, you agree to be contacted by Aurum Motors about your enquiry.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="site-footer" id="contact">
+  <div class="section-inner footer-grid">
+    <div class="footer-brand">
+      <span class="logo-mark">AURUM</span><span class="logo-sub">MOTORS</span>
+      <p>A curated luxury car dealership built on trust, transparency and an obsession with detail.</p>
+      <div class="social-icons">
+        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 8.5h2V5.2c-.35-.05-1.55-.15-2.95-.15-2.92 0-4.92 1.78-4.92 5.05V13H6.5v3.7h3.63V23h3.8v-6.3h3.49L18 13h-4.07v-2.5c0-1.07.29-1.8 1.83-1.8Z" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="1.5"/><circle cx="16.6" cy="7.4" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5 5 19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="6.5" width="17" height="11" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M10.5 10.2v3.6l3.2-1.8-3.2-1.8Z" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#top">Home</a>
+      <a href="#showcase">Showroom</a>
+      <a href="#stats">Track Record</a>
+      <a href="#features">Why Us</a>
+      <a href="#lead-form">Get a Quote</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+201000000000">+20 100 000 0000</a>
+      <a href="mailto:hello@aurummotors.example">hello@aurummotors.example</a>
+      <span>Sheikh Zayed City, Giza, Egypt</span>
+    </div>
+
+    <div class="footer-col footer-map">
+      <h4>Showroom</h4>
+      <div class="map-placeholder" role="img" aria-label="Map placeholder showing showroom location">
+        <svg viewBox="0 0 200 120" width="100%" height="100%" aria-hidden="true">
+          <rect width="200" height="120" fill="none"/>
+          <path d="M0 90 L60 60 L110 75 L150 40 L200 55" stroke="#C9A768" stroke-width="1.2" fill="none" opacity="0.6"/>
+          <circle cx="150" cy="40" r="5" fill="#C9A768"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© <span id="year"></span> Aurum Motors. All rights reserved.</span>
+    <span>Designed for a premium car-buying experience.</span>
+  </div>
+</footer>
+
+<!-- ============================================
+     FLOATING ACTION BUTTONS
+     ============================================ -->
+<a href="https://wa.me/201000000000" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><path d="M16 4C9.4 4 4 9.4 4 16c0 2.4.7 4.7 2 6.6L4 28l5.6-1.9c1.8 1 3.9 1.5 6.4 1.5 6.6 0 12-5.4 12-12S22.6 4 16 4Z" fill="#25D366"/><path d="M12.3 10.6c-.3-.6-.6-.6-.9-.6h-.7c-.3 0-.7.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.3 2.6 4 6.3 5.5 3.1 1.2 3.7 1 4.4.9.7-.1 2.2-.9 2.5-1.7.3-.9.3-1.6.2-1.7-.1-.2-.3-.3-.7-.5-.3-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.2.3-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.3-.2-1.5-.5-2.8-1.7-1-1-1.7-2.1-1.9-2.5-.2-.3 0-.5.2-.7.2-.2.3-.3.5-.6.1-.2.2-.4.3-.6.1-.2 0-.5 0-.6-.1-.2-.7-1.9-1-2.5Z" fill="#fff"/></svg>
+</a>
+
+<button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<!-- ============================================
+     SUCCESS / ERROR MODALS
+     ============================================ -->
+<div class="modal-overlay" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle" hidden>
+  <div class="modal-card">
+    <svg class="modal-check" width="56" height="56" viewBox="0 0 56 56" fill="none">
+      <circle cx="28" cy="28" r="26" stroke="#C9A768" stroke-width="2"/>
+      <path id="checkPath" d="M17 29l7 7 15-16" stroke="#C9A768" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <h3 id="successTitle">Request Received</h3>
+    <p>Thank you — a specialist from Aurum Motors will call you back shortly.</p>
+    <button type="button" class="btn btn-primary modal-close" data-close="successModal">Done</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="errorModal" role="dialog" aria-modal="true" aria-labelledby="errorTitle" hidden>
+  <div class="modal-card">
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+      <circle cx="28" cy="28" r="26" stroke="#B4573C" stroke-width="2"/>
+      <path d="M28 17v16M28 38v.1" stroke="#B4573C" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+    <h3 id="errorTitle">Something Went Wrong</h3>
+    <p>We couldn't send your request. Please check your connection and try again.</p>
+    <button type="button" class="btn btn-outline modal-close" data-close="errorModal">Close</button>
+  </div>
+</div>
+
+<script defer>
+/* ============================================================
+   AURUM MOTORS — script.js
+   Vanilla JS ES6+, no dependencies.
+   ============================================================ */
+
+// ============================================================
+// 🔧 CONFIGURATION — set your n8n webhook URL here before launch.
+// Everything the lead form collects is POSTed as JSON to this
+// single endpoint. Leave it empty ("") to test the form locally —
+// submissions will be simulated successfully without any network call.
+// ============================================================
+const WEBHOOK_URL = "https://abdallahkaram739.app.n8n.cloud/webhook-test/0b0fb1f9-ecf4-4c3f-8aa7-a3d019d3f0fe";
+
+document.addEventListener("DOMContentLoaded", () => {
+  initLoadingScreen();
+  initHeroSlideshow();
+  initHeaderScroll();
+  initThemeToggle();
+  initMobileNav();
+  initScrollIndicator();
+  initRevealOnScroll();
+  initStatCounters();
+  initPhoneFormatting();
+  initLeadForm();
+  initBackToTop();
+  initModals();
+  document.getElementById("year").textContent = new Date().getFullYear();
+});
+
+/* ----------------------------------------------------------
+   Hero slideshow — crossfades between real car photos with a
+   slow Ken Burns zoom; syncs a set of progress dots.
+   ---------------------------------------------------------- */
+function initHeroSlideshow() {
+  const scene = document.getElementById("heroScene");
+  if (!scene) return;
+  const slides = Array.from(scene.querySelectorAll(".hero-slide"));
+  const dots = Array.from(document.querySelectorAll("#heroDots .hero-dot"));
+  if (slides.length < 2) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion) return; // keep first slide static, skip the timer entirely
+
+  let current = 0;
+  const SLIDE_DURATION = 9000;
+
+  function goTo(index) {
+    slides[current].classList.remove("is-active");
+    dots[current]?.classList.remove("is-active");
+
+    // Force a reflow so the CSS animation restarts cleanly next time
+    // this same slide becomes active again.
+    void slides[current].offsetWidth;
+
+    current = index;
+    slides[current].classList.add("is-active");
+    dots[current]?.classList.add("is-active");
+  }
+
+  setInterval(() => {
+    const next = (current + 1) % slides.length;
+    goTo(next);
+  }, SLIDE_DURATION);
+}
+
+/* ----------------------------------------------------------
+   Loading screen
+   ---------------------------------------------------------- */
+function initLoadingScreen() {
+  const screen = document.getElementById("loadingScreen");
+  const hide = () => screen.classList.add("is-hidden");
+  window.addEventListener("load", () => setTimeout(hide, 500));
+  // Fallback in case 'load' fires slowly or assets are cached oddly
+  setTimeout(hide, 2500);
+}
+
+/* ----------------------------------------------------------
+   Sticky header background on scroll
+   ---------------------------------------------------------- */
+function initHeaderScroll() {
+  const header = document.getElementById("siteHeader");
+  const onScroll = () => {
+    header.classList.toggle("is-scrolled", window.scrollY > 40);
+  };
+  document.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+}
+
+/* ----------------------------------------------------------
+   Dark / light mode toggle (persists for the session)
+   ---------------------------------------------------------- */
+function initThemeToggle() {
+  const toggle = document.getElementById("themeToggle");
+  const root = document.documentElement;
+
+  const apply = (theme) => {
+    if (theme === "light") {
+      root.setAttribute("data-theme", "light");
+      toggle.setAttribute("aria-pressed", "true");
+    } else {
+      root.removeAttribute("data-theme");
+      toggle.setAttribute("aria-pressed", "false");
+    }
+  };
+
+  let current = "dark";
+  try {
+    current = sessionStorage.getItem("aurum-theme") || "dark";
+  } catch (err) {
+    /* sessionStorage unavailable — default to dark */
+  }
+  apply(current);
+
+  toggle.addEventListener("click", () => {
+    current = current === "dark" ? "light" : "dark";
+    apply(current);
+    try {
+      sessionStorage.setItem("aurum-theme", current);
+    } catch (err) {
+      /* ignore persistence errors */
+    }
+  });
+}
+
+/* ----------------------------------------------------------
+   Mobile nav toggle
+   ---------------------------------------------------------- */
+function initMobileNav() {
+  const btn = document.getElementById("navToggle");
+  const nav = document.getElementById("mainNav");
+
+  btn.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("is-open");
+    btn.setAttribute("aria-expanded", String(isOpen));
+    nav.style.cssText = isOpen
+      ? "display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:var(--surface);padding:24px;border-bottom:1px solid var(--border);gap:20px;"
+      : "";
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("is-open");
+      nav.style.cssText = "";
+      btn.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+/* ----------------------------------------------------------
+   Hero scroll indicator
+   ---------------------------------------------------------- */
+function initScrollIndicator() {
+  const btn = document.getElementById("scrollIndicator");
+  btn.addEventListener("click", () => {
+    document.getElementById("stats").scrollIntoView({ behavior: "smooth" });
+  });
+}
+
+/* ----------------------------------------------------------
+   Scroll reveal animations (IntersectionObserver)
+   ---------------------------------------------------------- */
+function initRevealOnScroll() {
+  const items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    items.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -60px 0px" }
+  );
+  items.forEach((el) => observer.observe(el));
+}
+
+/* ----------------------------------------------------------
+   Animated stat counters — trigger once, when visible
+   ---------------------------------------------------------- */
+function initStatCounters() {
+  const numbers = document.querySelectorAll(".stat-number");
+  if (numbers.length === 0) return;
+
+  const animate = (el) => {
+    const target = parseInt(el.dataset.target, 10) || 0;
+    const suffix = el.dataset.suffix || "";
+    const duration = 1600;
+    const start = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const value = Math.round(target * eased);
+      el.textContent = value.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    numbers.forEach(animate);
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+  numbers.forEach((el) => observer.observe(el));
+}
+
+/* ----------------------------------------------------------
+   Phone number auto-formatting (simple, locale-agnostic)
+   Groups digits like: 010 1234 5678
+   ---------------------------------------------------------- */
+function initPhoneFormatting() {
+  const phone = document.getElementById("phone");
+  phone.addEventListener("input", () => {
+    let digits = phone.value.replace(/\D/g, "").slice(0, 11);
+    let formatted = digits;
+    if (digits.length > 3 && digits.length <= 7) {
+      formatted = `${digits.slice(0, 3)} ${digits.slice(3)}`;
+    } else if (digits.length > 7) {
+      formatted = `${digits.slice(0, 3)} ${digits.slice(3, 7)} ${digits.slice(7)}`;
+    }
+    phone.value = formatted;
+  });
+}
+
+/* ----------------------------------------------------------
+   Lead form: live validation, progress indicator, submit
+   ---------------------------------------------------------- */
+function initLeadForm() {
+  const form = document.getElementById("leadForm");
+  const progressFill = document.getElementById("formProgressFill");
+  const submitBtn = document.getElementById("submitBtn");
+
+  const requiredFields = ["fullName", "phone", "email", "brand"];
+  const allTrackedFields = form.querySelectorAll("input, select, textarea");
+
+  const validators = {
+    fullName: (v) => (v.trim().length >= 2 ? "" : "Please enter your full name."),
+    phone: (v) => (/^\d{3}\s?\d{3,4}\s?\d{3,4}$/.test(v.trim()) ? "" : "Enter a valid phone number."),
+    email: (v) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? "" : "Enter a valid email address."),
+    brand: (v) => (v ? "" : "Please select a brand."),
+  };
+
+  function validateField(field) {
+    const wrapper = field.closest(".field");
+    const msgEl = document.getElementById(field.id + "Msg");
+    const validator = validators[field.id];
+    if (!validator) return true;
+
+    const error = validator(field.value);
+    if (error) {
+      wrapper.classList.add("is-invalid");
+      wrapper.classList.remove("is-valid");
+      if (msgEl) msgEl.textContent = error;
+      return false;
+    }
+    wrapper.classList.remove("is-invalid");
+    wrapper.classList.add("is-valid");
+    if (msgEl) msgEl.textContent = "";
+    return true;
+  }
+
+  function updateProgress() {
+    const filled = Array.from(allTrackedFields).filter((f) => f.value && f.value.trim() !== "").length;
+    const pct = Math.min(100, Math.round((filled / allTrackedFields.length) * 100));
+    progressFill.style.width = pct + "%";
+  }
+
+  allTrackedFields.forEach((field) => {
+    field.addEventListener("input", () => {
+      if (validators[field.id]) validateField(field);
+      updateProgress();
+    });
+    field.addEventListener("blur", () => {
+      if (validators[field.id]) validateField(field);
+    });
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    let isValid = true;
+    requiredFields.forEach((id) => {
+      const field = document.getElementById(id);
+      if (!validateField(field)) isValid = false;
+    });
+    if (!isValid) {
+      form.querySelector(".is-invalid input, .is-invalid select")?.focus();
+      return;
+    }
+
+    const data = {
+      name: document.getElementById("fullName").value.trim(),
+      phone: document.getElementById("phone").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      brand: document.getElementById("brand").value,
+      model: document.getElementById("model").value.trim(),
+      budget: document.getElementById("budget").value,
+      paymentMethod: document.getElementById("paymentMethod").value,
+      notes: document.getElementById("notes").value.trim(),
+      submittedAt: new Date().toISOString(),
+    };
+
+    setSubmitting(true);
+
+    try {
+      if (!WEBHOOK_URL) {
+        // No webhook configured yet — simulate success locally so the
+        // flow can still be demonstrated/tested end to end.
+        await new Promise((resolve) => setTimeout(resolve, 900));
+        console.warn("WEBHOOK_URL is empty — simulated a successful submit. Set WEBHOOK_URL in script.js to go live.");
+      } else {
+        const res = await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error("Webhook responded with status " + res.status);
+      }
+
+      openModal("successModal");
+      form.reset();
+      allTrackedFields.forEach((f) => f.closest(".field")?.classList.remove("is-valid", "is-invalid"));
+      updateProgress();
+    } catch (err) {
+      console.error("Lead submission failed:", err);
+      openModal("errorModal");
+    } finally {
+      setSubmitting(false);
+    }
+  });
+
+  function setSubmitting(isLoading) {
+    submitBtn.classList.toggle("is-loading", isLoading);
+    submitBtn.disabled = isLoading;
+  }
+}
+
+/* ----------------------------------------------------------
+   Back to top button
+   ---------------------------------------------------------- */
+function initBackToTop() {
+  const btn = document.getElementById("backToTop");
+  document.addEventListener(
+    "scroll",
+    () => btn.classList.toggle("is-visible", window.scrollY > 600),
+    { passive: true }
+  );
+  btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+}
+
+/* ----------------------------------------------------------
+   Success / error modals
+   ---------------------------------------------------------- */
+function initModals() {
+  document.querySelectorAll(".modal-close").forEach((btn) => {
+    btn.addEventListener("click", () => closeModal(btn.dataset.close));
+  });
+  document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeModal(overlay.id);
+    });
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".modal-overlay:not([hidden])").forEach((m) => closeModal(m.id));
+    }
+  });
+}
+
+function openModal(id) {
+  const modal = document.getElementById(id);
+  modal.hidden = false;
+  modal.querySelector(".modal-close")?.focus();
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  if (modal) modal.hidden = true;
+}
+
+</script>
+</body>
+</html>
